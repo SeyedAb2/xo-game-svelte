@@ -1,18 +1,16 @@
 <!-- Script Component -->
 <script>
 	import Login from './components/Login.svelte';
-</script> 
+</script> 	
 
 <!-- Style Component -->
 <style global type="text/scss">
-	@import "../node_modules/bootstrap/scss/bootstrap.scss";
 	body{
 		position:relative;
 	}
 	.header{
 		padding-top: 15px;
-		// background-color: black;
-		// box-shadow:0 0 10px 10px black;
+		
 		h1{
 			margin-top:20px;
 			background: -webkit-linear-gradient(45deg,#0077ff, #c91400);
@@ -68,7 +66,7 @@
 	</div>
 </div>
 
-<div class="content my-5">
+<div class="content my-5 ">
 	<Login />
 </div>
 <div class="copyright">&copy; Copyright , Create And Developed By SeyedAb2</div>
