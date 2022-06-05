@@ -1,6 +1,9 @@
 <!-- Script Component -->
 <script>
+	import GameSetup from './components/game-setup.svelte';
 	import Login from './components/Login.svelte';
+	import {user} from "./store/store";
+	
 </script> 	
 
 <!-- Style Component -->
@@ -67,6 +70,15 @@
 </div>
 
 <div class="content my-5 ">
-	<Login />
+	{#if $user}
+		<div>
+			<GameSetup />
+		</div>
+	{/if}
+	{#if !$user}
+		<div >
+			<Login />
+		</div>
+	{/if}
 </div>
 <div class="copyright">&copy; Copyright , Create And Developed By SeyedAb2</div>

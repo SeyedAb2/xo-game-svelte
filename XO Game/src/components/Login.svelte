@@ -1,11 +1,28 @@
 <script>
     import {user} from "../store/store";
+
     let userInput = {
         email:"",
         password:""
     }
+    let error = undefined;
+    function login(){
+        user.login(userInput).catch(
+            err => error = err.response
+        )
+    }
+    function register(){
+        user.register(userInput).catch(
+            err => {
+                error = err.response;
+            }
+        )
+    }
 </script>
 <style  type="text/scss">
+    .text-error{
+        color:rgb(211, 60, 60);
+    }
     .login-main{
         height: 300px;
         background: rgb(27, 27, 27);
@@ -18,6 +35,7 @@
             margin: 10px 0 0 0;
         }
         .describ{
+            font-family: 'Pacifico', cursive;;
             text-align: center;
             color:rgb(153, 153, 153);
         }
@@ -32,36 +50,51 @@
             }
         }
         .btn-custom{
+            font-family: 'Pacifico', cursive;;
             width: 30%;
             margin:20px 10px 10px 0;
             text-align: center;
             padding:5px;
             color:white;
-            &:active{
-                background:rgba(184, 2, 2, 0.945);
-                box-shadow: 0 0 0 0;
-            }
-            &:focus{
-                box-shadow: 0;
-            }
-            &:hover{
-                @media(min-width:768px){
-                    background:rgba(184, 2, 2, 0.945);
-                }
-            }
+            
             &:nth-child(1){
                 background:#0077ff;
             }
             &:nth-child(2){
                 background:#c91400;
             }
+            &:active{
+                &:nth-child(1){
+                background:#004492;
+                }
+                &:nth-child(2){
+                    background:rgba(184, 2, 2, 0.945);
+                }
+                // background:rgba(184, 2, 2, 0.945);
+                box-shadow: 0 0 0 0;
+            }
+            &:focus{
+                box-shadow: 0 0 0 0;
+                border:0;
+                outline:0;
+            }
+            &:hover{
+                @media(min-width:768px){
+                    &:nth-child(1){
+                        background:#004492;
+                    }
+                    &:nth-child(2){
+                        background:rgba(184, 2, 2, 0.945);
+                    }
+                }
+            }
         }
     }
 </style>
-<div class="container mx-auto">
+<div  class="container mx-auto">
     <div class="row justify-content-center d-flex align-items-start">
-        <div class="col-11 col-sm-10 col-md-4 overflow-hidden login-main">
-            <div class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
+        <div  class="col-11 col-sm-10 col-md-4 overflow-hidden login-main">
+            <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
                 <h1 class="col-12 text-center font-family login-title">
                     Login \ Sign-up
                 </h1>
@@ -81,9 +114,15 @@
                                 </span>
                                 <input bind:value="{userInput.password}" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="password-wrapping">
                             </div>
+                            
+                            {#if error && error.status!=200}
+                                <div class="text-center text-error w-100 mt-1 p-2">
+                                    {error.data.message[0].messages[0].message}
+                                </div>
+                            {/if}
                             <div class="row justify-content-end">
-                                <button on:click = {()=> user.register(userInput)} class="btn btn-custom">Register</button>
-                                <button on:click = {()=> user.login(userInput)} class="btn btn-custom">Login</button>
+                                <button on:click = {register} class="btn btn-custom">Register</button>
+                                <button on:click = {login} class="btn btn-custom">Login</button>
                             </div>
                         </div>
                     </div>
