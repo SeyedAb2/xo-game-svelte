@@ -1,6 +1,12 @@
 <script>
     import { user , game , board , moveUpdate } from "../store/store";
     let error = undefined;
+    let manualBoard = undefined;
+    const unsubscribe = board.subscribe(
+        (value) => {
+            manualBoard = value;
+        }
+    );
     const copyCode = ()=>{
         let copyElement = document.querySelector(".copy");
         copyElement.style.insetInlineStart = 60 + "%"
@@ -44,52 +50,77 @@
         }
         return table;
     }
-    $: opponent = getOpponent($board);
-    $: table = createTable($board);
+    $: opponent = getOpponent(manualBoard);
+    $: table = createTable(manualBoard);
 </script>
-{#if opponent}
-    <div class="col-11 col-sm-10 col-md-5 overflow-hidden game-main-board">
-        <div  class="row d-flex align-end h-100 w-100 m-0 p-0 align-items-start justify-content-center">
-            <div class="table-parent h-100 row pb-5 d-flex justify-content-center align-items-end">
+
+{#if manualBoard && manualBoard.winner}
+<div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
+    <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
+        <div class="col-12 my-4">
+            <div class="row  justify-content-center justify-content-center">
+                {unsubscribe() || ""}
                 <p class="w-100 m-0 p-0 mt-2 describ">
-                    game code : {$board.code}
+                    game code : {manualBoard.code}
                 </p>
                 <p class="w-100 m-0 p-0 my-2 describ">
                     opponent username : {opponent.email}
                 </p>
-                <table class="table-font">
-                    {#each table as row}
-                        <tr class="row">
-                            {#each row as cell}
-                                <td class="{cell.marker == "X" ? 'o-color cell col':'x-color cell col'}" on:click={()=>{moveUpdate(cell,$board,$user)}}>
-                                    {cell.marker}
-                                </td>
-                            {/each}
-                        </tr>
-                    {/each} 
-                </table>
-            </div>
-        </div>   
-    </div>
-{:else}
-    <div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
-        <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
-            <div class="col-12 my-4">
-                <div class="row  justify-content-center justify-content-center">
-                    <h2 class="position-relative text-center new-game-title">
-                        Your game code is <span code="{$game.code}" on:click="{copyCode}" class="code">{$game.code}</span> 
-                        <span class="copy">copied</span>
-                    </h2>
-                    <p class="share-friend">feel free to share width anyone you want to play with.</p>
-                    <div class="lds-hourglass mt-2"></div>
-                    <p class="mt-2 text-center waiting-text font-weight-bold">
-                        Wait for the player to join
-                    </p>
-                </div>
+                <p class="describ">
+                    winner : {manualBoard.winner.username}
+                </p>
             </div>
         </div>
-    </div> 
+    </div>
+</div>
+    
+{:else}
+    {#if opponent}
+        <div class="col-11 col-sm-10 col-md-5 overflow-hidden game-main-board">
+            <div  class="row d-flex align-end h-100 w-100 m-0 p-0 align-items-start justify-content-center">
+                <div class="table-parent h-100 row pb-5 d-flex justify-content-center align-items-end">
+                    <p class="w-100 m-0 p-0 mt-2 describ">
+                        game code : {manualBoard.code}
+                    </p>
+                    <p class="w-100 m-0 p-0 my-2 describ">
+                        opponent username : {opponent.email}
+                    </p>
+                    <table class="table-font">
+                        {#each table as row}
+                            <tr class="row">
+                                {#each row as cell}
+                                    <td class="{cell.marker == "X" ? 'o-color cell col':'x-color cell col'}" on:click={()=>{moveUpdate(cell,manualBoard,$user)}}>
+                                        {cell.marker}
+                                    </td>
+                                {/each}
+                            </tr>
+                        {/each} 
+                    </table>
+                </div>
+            </div>   
+        </div>
+    {:else}
+        <div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
+            <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
+                <div class="col-12 my-4">
+                    <div class="row  justify-content-center justify-content-center">
+                        <h2 class="position-relative text-center new-game-title">
+                            Your game code is <span code="{$game.code}" on:click="{copyCode}" class="code">{$game.code}</span> 
+                            <span class="copy">copied</span>
+                        </h2>
+                        <p class="share-friend">feel free to share width anyone you want to play with.</p>
+                        <div class="lds-hourglass mt-2"></div>
+                        <p class="mt-2 text-center waiting-text font-weight-bold">
+                            Wait for the player to join
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    {/if}
 {/if}
+
+
 
 <style type="text/scss">
 .game-main{

@@ -15,17 +15,6 @@
             err => {error = err}
         ); 
     }
-    const copyCode = ()=>{
-        let copyElement = document.querySelector(".copy");
-        copyElement.style.insetInlineStart = 60 + "%"
-        setTimeout(()=>{
-            copyElement.style.insetInlineStart = 110 + "%"
-        },2000)
-        let copyText = $game.code;
-        navigator.clipboard.writeText(copyText);
-    }
-    // console.log($board)
-    // $: $game;
 </script>
 <style type="text/scss">
     .game-main{

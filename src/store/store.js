@@ -43,11 +43,14 @@ export const game = {
 }
 export const board = derived([userStore, gameStore], ([$user, $game], set) => {
     if ($user, $game) {
-        setInterval(() => {
+        const interval = setInterval(() => {
             axios.get(`https://xo-backend-soroosh.fandogh.cloud/games/${$game.code}`, { headers: { 'Authorization': `Bearer ${$user.jwt}` } }).then(
                 response => set(response.data)
             )
         }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
     }
 }, get(gameStore))
 
