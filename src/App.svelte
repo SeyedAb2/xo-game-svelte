@@ -30,6 +30,21 @@
 		.logo{
 			width:100px;
 			height:100px;
+			@media(max-width:768px){
+				width:50px;
+				height:50px;
+				margin-bottom:20px;
+			}
+		}
+		.logo+h1{
+			@media(max-width:768px){
+				font-size: 2.6rem;
+				margin-bottom:30px;
+			}
+			@media(max-width:420px){
+				font-size: 1.6rem;
+				margin-bottom:30px;
+			}
 		}
 	}
 	.content{
@@ -56,7 +71,7 @@
 	<div class="row align-items-center justify-content-between">
 		<div class="col-auto ms-3 d-flex align-items-center">
 			<img class="logo" src="./image/xo.png" alt="" tite="">
-			<h1 class="d-none d-md-flex">
+			<h1 class="d-flex">
 				<span class="x-word">X</span><span class="o-word">O</span>
 				<span class="game-word">Game</span>
 			</h1>
@@ -76,7 +91,7 @@
 		</div>
 	{/if}
 	{#if !$user}
-		<div >
+		<div>
 			<Login />
 		</div>
 	{/if}

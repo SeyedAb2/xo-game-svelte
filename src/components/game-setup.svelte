@@ -32,6 +32,9 @@
             font-family: 'Fjalla', cursive;;
             text-align: center;
             color:rgb(153, 153, 153);
+            @media(max-width:360px){
+                font-size:0.8rem
+            }
         }
     }
     .game-main-board{
@@ -49,6 +52,9 @@
             font-family: 'Fjalla', cursive;;
             text-align: center;
             color:rgb(153, 153, 153);
+            @media(max-width:360px){
+                font-size:0.9rem
+            }
         }
     }
     .menu-item{
@@ -56,6 +62,9 @@
         font-size:1.3rem;
         font-family: 'Fjalla', cursive;
         // cursor: pointer;
+        @media(max-width:380px){
+            font-size:1.2rem;
+        }
         transition: all 0.25s;
         &:hover{
             .arrow-o,.arrow-x{
@@ -190,7 +199,7 @@
 <div class="container mx-auto">
     <div class="row justify-content-center d-flex align-items-start">
         {#if !$game}
-        <div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
+        <div class="col-11 col-sm-10 col-md-6 col-lg-5 overflow-hidden game-main">
             <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
                 <h1 class="col-12 text-center font-family game-title">
                     Welcome To XO Game

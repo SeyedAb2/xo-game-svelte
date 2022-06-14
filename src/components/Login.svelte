@@ -24,7 +24,7 @@
         color:rgb(211, 60, 60);
     }
     .login-main{
-        height: 300px;
+        height: 310px;
         background: rgb(27, 27, 27);
         border-radius:25px;
         box-shadow: 0 0 0.2rem 0.1rem rgba(white, .15);
@@ -38,6 +38,9 @@
             font-family: 'Pacifico', cursive;;
             text-align: center;
             color:rgb(153, 153, 153);
+            @media(max-width:365px){
+                font-size:0.95rem
+            }
         }
         .input-group {
             input , span{
@@ -93,7 +96,7 @@
 </style>
 <div  class="container mx-auto">
     <div class="row justify-content-center d-flex align-items-start">
-        <div  class="col-11 col-sm-10 col-md-4 overflow-hidden login-main">
+        <div  class="col-11 col-sm-10 col-md-6 col-lg-4 overflow-hidden login-main">
             <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
                 <h1 class="col-12 text-center font-family login-title">
                     Login \ Sign-up

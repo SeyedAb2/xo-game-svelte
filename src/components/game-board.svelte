@@ -55,7 +55,7 @@
 </script>
 
 {#if manualBoard && manualBoard.winner}
-<div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
+<div class="col-11 col-sm-10 col-md-6 col-lg-4 overflow-hidden game-main">
     <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
         <div class="col-12 my-4">
             <div class="row  justify-content-center justify-content-center">
@@ -76,7 +76,7 @@
     
 {:else}
     {#if opponent}
-        <div class="col-11 col-sm-10 col-md-5 overflow-hidden game-main-board">
+        <div class="col-11 col-sm-10 col-md-6 col-lg-5 overflow-hidden game-main-board">
             <div  class="row d-flex align-end h-100 w-100 m-0 p-0 align-items-start justify-content-center">
                 <div class="table-parent h-100 row pb-5 d-flex justify-content-center align-items-end">
                     <p class="w-100 m-0 p-0 mt-2 describ">
@@ -100,7 +100,7 @@
             </div>   
         </div>
     {:else}
-        <div class="col-11 col-sm-10 col-md-4 overflow-hidden game-main">
+        <div class="col-11 col-sm-10 col-md-5 col-lg-4 overflow-hidden game-main">
             <div  class="row h-100 w-100 m-0 p-0 align-items-start justify-content-center">
                 <div class="col-12 my-4">
                     <div class="row  justify-content-center justify-content-center">
@@ -304,8 +304,57 @@
             border-radius: 10px;
             margin: 2px;
             height: 10vw;
+            @media(min-width:1460px){
+                width: 140px;
+                height: 140px;
+                font-size:7rem;
+            }
+            @media(max-width:1256px){
+                width: 8vw;
+                height: 10vw;
+                font-size:7rem;
+            }
+            @media(max-width:1156px){
+                width:9.1vw;
+                height: 11.6vw;
+                font-size:7rem;
+            }
+            @media(max-width:1056px){
+                width: 10vw;
+                height: 13vw;
+                font-size:7rem;
+            }
+            @media(max-width:930px){
+                width: 9vw;
+                height: 14vw;
+                font-size:6.7rem;
+            }
+            @media(max-width:790px){
+                width: 11.2vw;
+                height: 16vw;
+                font-size:6.7rem;
+            }
+            @media(max-width:680px){
+                width: 14vw;
+                height: 21vw;
+                font-size: 5.9rem;
+            }
+            @media(max-width:510px){
+                width: 19vw;
+                height: 28vw;
+                font-size: 6.2rem;
+            }
+            @media(max-width:440px){
+                width: 22vw;
+                height: 32vw;
+                font-size: 7rem;
+            }
+            @media(max-width:380px){
+                width: 20vw;
+                height: 30vw;
+                font-size: 6rem;
+            }
             text-align: center;
-            font-size: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
