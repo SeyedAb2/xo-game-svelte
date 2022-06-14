@@ -18,6 +18,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     background-image: url('./image/1001.png');
     background-size: 150px;
+    /* cursor: none; */
+    cursor: url(./image/cursor.png) 2 3, default;
 }
 
 a {
@@ -49,6 +51,7 @@ textarea {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 2px;
+    cursor: url(./image/input.png) 2 3, text !important;
 }
 
 input:disabled {
@@ -59,6 +62,11 @@ button {
     color: #333;
     background-color: #f4f4f4;
     outline: none;
+    cursor: url(./image/pointer.png) 2 3, pointer;
+}
+
+button:hover {
+    cursor: url(./image/pointer.png) 2 3, pointer !important;
 }
 
 button:disabled {
@@ -72,3 +80,12 @@ button:not(:disabled):active {
 button:focus {
     border-color: #666;
 }
+
+
+/* .auto-cur {
+    cursor: url(./image/cursor.png);
+}
+
+.pointer-cur {
+    cursor: url(./image/hand-pointer.png);
+} */

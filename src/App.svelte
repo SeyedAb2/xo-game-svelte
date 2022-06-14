@@ -9,6 +9,7 @@
 <style global type="text/scss">
 	body{
 		position:relative;
+		// cursor: url('../../public/image/cursor.png') 10 12, auto;
 	}
 	.header{
 		padding-top: 15px;
@@ -51,7 +52,7 @@
 
 <!-- Template Component -->
 
-<div class="w-100 container-fluid m-0 header">
+<div class="w-100 auto-cur container-fluid m-0 header">
 	<div class="row align-items-center justify-content-between">
 		<div class="col-auto ms-3 d-flex align-items-center">
 			<img class="logo" src="./image/xo.png" alt="" tite="">

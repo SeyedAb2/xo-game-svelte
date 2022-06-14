@@ -55,7 +55,7 @@
         color:rgb(190, 190, 190);
         font-size:1.3rem;
         font-family: 'Fjalla', cursive;
-        cursor: pointer;
+        // cursor: pointer;
         transition: all 0.25s;
         &:hover{
             .arrow-o,.arrow-x{
@@ -157,7 +157,7 @@
             background-color:rgba(0, 0, 0, 0.87);
             padding:6px 15px;
             border-radius: 5px;
-            cursor:pointer;
+            // cursor:pointer;
         }
         .copy{
             margin: 0 10px;
